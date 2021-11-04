@@ -1,0 +1,7 @@
+
+
+class GetAllReservationsService {
+
+}
+
+export { GetAllReservationsService }
