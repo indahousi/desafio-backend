@@ -4,14 +4,15 @@ import { GetAllReservationsService } from '../services/GetAllReservationsService
 
 class GetAllReservationsController {
     async handle(request: Request, response: Response) {
-        const { name, email, admin, password} = request.body;
+        
+        const getAllReservationsService = new GetAllReservationsService();
 
-        const createUserService = new GetAllReservationsService();
+        const reservations = await getAllReservationsService.execute();
 
-        const user = await createUserService.execute({ name, email, admin, password});
-
-        return response.json(user);
+        return response.json(reservations);
     }
 }
 
-export { GetAllReservationsController };
+const getAllReservationsController = new GetAllReservationsController()
+
+export { getAllReservationsController };
