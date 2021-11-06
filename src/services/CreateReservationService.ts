@@ -10,8 +10,7 @@ class CreateReservationService {
             checkout_date,
             number_guests,
             guest_data })
-        // console.log(reservation)
-        // await Reservation.save(reservation);
+     
         return reservation;
     }
 

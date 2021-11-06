@@ -1,15 +1,18 @@
 import { Request, Response } from 'express';
-import { GetAllReservationsService } from '../services/GetAllReservationsService';
+import { getAllReservations } from '../services/GetAllReservationsService';
 
 
 class GetAllReservationsController {
     async handle(request: Request, response: Response) {
         
-        const getAllReservationsService = new GetAllReservationsService();
+       
+            const reservations = await getAllReservations({});
 
-        const reservations = await getAllReservationsService.execute();
-
-        return response.json(reservations);
+            if (reservations) {
+                return response.status(200).json({count: reservations.length, reservations})
+            } else {
+                return response.status(400).json({ error: 'Reservations not found' })
+            }
     }
 }
 

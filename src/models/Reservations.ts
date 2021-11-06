@@ -30,7 +30,7 @@ const ReservationSchema = new mongoose.Schema({
     },
     checkout_date: {
         type: Date,
-        required: [true,'must provide check-in date'],
+        required: [true,'must provide check-out date'],
         default: false
     },
     number_guests: {
