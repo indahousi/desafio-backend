@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import {connectDB} from "./db/connect";
 dotenv.config();
 
-const app = express();
+const app = express ();
 app.use(express.json());
 
 app.use("/api/v1/reserva", router);
