@@ -8,10 +8,7 @@ export async function findAndUpdateReservations(
     options: QueryOptions
   ) {
     
-      try {
         const reservation = await Reservation.findOneAndUpdate(query, update, options);
         return reservation
-      } catch (error) {
-        throw error
-      }
+      
   }
