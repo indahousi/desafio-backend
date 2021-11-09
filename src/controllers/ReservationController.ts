@@ -14,7 +14,6 @@ class ReserveController {
         try {
             const checkReservation = await findReservationByDate({...request.body})
             if (checkReservation.length > 0) {
-                console.log(checkReservation)
                 return response.status(400).json({ error: 'Reservation already exists' })
             }          
             const reservation = await createReservation(request.body)
