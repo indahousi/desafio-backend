@@ -115,7 +115,7 @@ Deverá informar os dados em json:
 
 ```
 {
-	"apartment_name": "quarto1",            //String required max:20
+	"apartment_name": "quarto1",            
     "checkin_date": "2021-11-07 10:30",
     "checkout_date": "2021-11-12 12:00",
     "number_guests": 2,
