@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/models/Reservations.ts</title>
+    <title>Code coverage report for src/config/App.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/models</a> Reservations.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/config</a> App.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">93.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>44/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">93.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>44/47</span>
             </div>
         
             
@@ -103,9 +103,7 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -141,67 +139,63 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import mongoose from "mongoose"
-import {IReservations} from "../interfaces/Reservations"
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express'
+import { router } from '../routes/reservas'
+import { connectDB } from '../db/connect'
+import dotenv from 'dotenv'
+import cors from 'cors'
 &nbsp;
-const GuestSchema = new mongoose.Schema({
-    guest_name: {
-        type: String,
-        required: [true,'must provide name'],
-        trim: true,
-        maxlength:[50, 'name can not be more than 50 char']
-    },
-    guest_email: {
-        type: String,
-        required: [true,'must provide email'],
-        trim: true,
-        maxlength:[30, 'email can not be more than 30 char']
-    }
-})
+dotenv.config()
 &nbsp;
-const ReservationSchema = new mongoose.Schema({
-    apartment_name: {
-        type: String,
-        required: [true,'must provide name'],
-        trim: true,
-        maxlength:[20, 'name can not be more than 20 char']
-    },
-    checkin_date: {
-        type: Date,
-        required: [true,'must provide check-in date'],
-        default: false
-    },
-    checkout_date: {
-        type: Date,
-        required: [true,'must provide check-out date'],
-        default: false
-    },
-    number_guests: {
-        type: Number,
-        required: [true,'must provide number of guests'],
-        default: false
-    },
-    guest_data: [GuestSchema],
-    timestamp: {
-        type: Date,
-        default: Date.now
+export class App {
+    public app: express.Application
+    public port: number
+    
+    constructor() {
+        this.app = express()
+        this.port = Number(process.env.PORT)<span class="branch-0 cbranch-no" title="branch not covered" > || 3000</span>
+    
+        this.initializeMiddlewares()
+        this.initializeControllers()
+        this.initializeDatabase()
+        this.listen()
     }
-})
-const Reservation = mongoose.model&lt;IReservations&gt;('Reservation', ReservationSchema)
-export { Reservation }
-&nbsp;</pre></td></tr></table></pre>
+    
+    private initializeMiddlewares(): void {
+        this.app.use(express.json())
+        this.app.use(cors())
+    }
+    
+    private initializeControllers(): void {
+        this.app.use('/api/v1/reserva', router)
+    }
+&nbsp;
+    private initializeDatabase(): void {
+        try {
+            connectDB(process.env.MONGO_URI)
+            console.log('Database connected')
+          } <span class="branch-0 cbranch-no" title="branch not covered" >catch (error) {</span>
+<span class="cstat-no" title="statement not covered" >            console.log(error)</span>
+<span class="cstat-no" title="statement not covered" >          }</span>
+    }
+    
+    
+    public listen(): void{
+        this.app.listen(this.port, () =&gt; {
+<span class="cstat-no" title="statement not covered" >        console.log(`App listening on the port ${this.port}`)</span>
+        })
+    }
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

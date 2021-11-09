@@ -29,9 +29,10 @@ export class App {
         this.app.use('/api/v1/reserva', router)
     }
 
-    private async initializeDatabase(): Promise<void> {
+    private initializeDatabase(): void {
         try {
-            await connectDB(process.env.MONGO_URI)
+            connectDB(process.env.MONGO_URI)
+            console.log('Database connected')
           } catch (error) {
             console.log(error)
           }
