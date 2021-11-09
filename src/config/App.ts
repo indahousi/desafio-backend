@@ -6,18 +6,15 @@ import cors from 'cors'
 
 dotenv.config()
 
-export class App {
+class App {
     public app: express.Application
-    public port: number
     
     constructor() {
         this.app = express()
-        this.port = Number(process.env.PORT) || 3000
     
         this.initializeMiddlewares()
         this.initializeControllers()
         this.initializeDatabase()
-        this.listen()
     }
     
     private initializeMiddlewares(): void {
@@ -32,16 +29,9 @@ export class App {
     private initializeDatabase(): void {
         try {
             connectDB(process.env.MONGO_URI)
-            console.log('Database connected')
           } catch (error) {
             console.log(error)
           }
     }
-    
-    
-    public listen(): void{
-        this.app.listen(this.port, () => {
-        console.log(`App listening on the port ${this.port}`)
-        })
-    }
 }
+export default new App().app
