@@ -3,18 +3,15 @@ version: "3" ## especifica a versão do docker-compose file
 services: ## Define um serviço
   app: ## nome do serviço
     build: . ## localização do dockerfile
-    command: npm start ## comando a executar
+    command: yarn start ## comando a executar
     ports:
       - "3000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
     volumes:
       - .:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+    depends_on:
+      - mongodb ## dependencia do serviço db  
 
-  db: ## nome do serviço
+  mongodb: ## nome do serviço
     image: mongo:5 ## nome do container
-    restart: always ## reinicia o container sempre que ocorrer alguma alteração
-    environment:  ## define o ambiente do container
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME} ## define o usuário root do mongo
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD} ## define a senha do usuário root do mongo
-      MONGO_INITDB_DATABASE: desafio ## define o nome do banco de dados
     ports:
       - "27017:27017" ## redirecionamento de porta quando chegar alguma requisição na porta 27017 chama o container na porta 27017
