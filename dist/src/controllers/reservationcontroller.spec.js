@@ -9,11 +9,6 @@ const App_1 = __importDefault(require("../config/App"));
 beforeAll(done => {
     done();
 });
-afterAll(done => {
-    // Closing the DB connection allows Jest to exit successfully.
-    mongoose_1.default.connection.close();
-    done();
-});
 const reserveTest = {
     _id: '6189ed211ce71374b338850c',
     apartment_name: 'teste',
@@ -71,4 +66,9 @@ describe('Reservation Controller', () => {
             .delete(`/api/v1/reserva/${reserveTest._id}`);
         expect(test.statusCode).toBe(200);
     });
+});
+afterAll(done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    mongoose_1.default.connection.close();
+    done();
 });
