@@ -23,16 +23,17 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Start MongoDB
-      uses: supercharge/mongodb-github-action@1.6.0
-      with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+    - name: Start Docker for Mongodb
+      run: docker run -d -p 27017:27017 mongo
 
     - name: Install dependencies
-      run: yarn --frozen-lockfile
+      run: |
+        yarn ci
+        yarn build
 
     - run: yarn test
-      
+      env:
+          CI: true
 
       
     
