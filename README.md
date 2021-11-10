@@ -2,6 +2,15 @@
 
 API para reservas de apartamentos.
 
+
+## Documentação Swagger
+
+```
+
+http://localhost:3000/api-docs
+
+```
+
 ## Variáveis de ambiente
 > .env
 
