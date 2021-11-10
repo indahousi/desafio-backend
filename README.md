@@ -94,7 +94,7 @@ Resposta do tipo json:
 
 > localhost:3000/api/v1/reserva/id
 
-Deverá informar o id na url.
+Deverá informar o id como parâmetro na url.
 Resposta do tipo json se o id for encontrado, ou então retornará um erro 404
 
 
@@ -136,7 +136,6 @@ Resposta do tipo json se os dados forem validados, ou então retornará uma mens
 ## Buscar reservas por data
 
 > localhost:3000/api/v1/reserva/getByDate
-
 Deverá informar os parâmetros 'apartment_name' 'checkin_date' e 'checkout_date':
 ```
 	{
