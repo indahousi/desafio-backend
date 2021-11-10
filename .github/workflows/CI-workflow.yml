@@ -3,8 +3,6 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -17,7 +15,8 @@ jobs:
         mongodb-version: [4.2]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Git checkout
+        uses: actions/checkout@v2
         run: git fetch --prune --unshallow
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -35,4 +34,6 @@ jobs:
       
       - name: Run tests
         run: yarn test
+
+      
     
