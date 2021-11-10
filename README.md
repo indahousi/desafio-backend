@@ -48,10 +48,10 @@ docker-compose down -v
 |---|---|---|---|
 | `GET` | localhost:3000/api/v1/reserva/ | | Retorna todas as reservas
 | `GET` | localhost:3000/api/v1/reserva/ | id | Retorna a reserva com o id passado por parâmetro
-| `POST` | localhost:3000/api/v1/reserva/ |  | Cria uma nova reserva
-| `POST` | localhost:3000/api/v1/reserva/ | getByDate | Filtrar reservas por data
-| `PUT` | localhost:3000/api/v1/reserva/ | id | Atualiza a reserva com o id passado por parâmetro
-| `DELETE` | localhost:3000/api/v1/reserva/ | id | Deleta a reserva com o id passado por parâmetro
+| `POST` | localhost:3000/api/v1/reserva/create/ |  | Cria uma nova reserva
+| `POST` | localhost:3000/api/v1/reserva/getByDate/ |  | Filtrar reservas por data
+| `PUT` | localhost:3000/api/v1/reserva/update/ | id | Atualiza a reserva com o id passado por parâmetro
+| `DELETE` | localhost:3000/api/v1/reserva/delete/ | id | Deleta a reserva com o id passado por parâmetro
 
 
 
