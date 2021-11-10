@@ -31,12 +31,8 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
 
-    - name: typescript build
-      run: yarn run build
-
     - run: yarn test
-      env:
-        CI: true
+      
 
       
     

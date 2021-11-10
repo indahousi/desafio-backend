@@ -4,25 +4,21 @@ import App from '../config/App'
 
 beforeAll(done => {
     done()
-  })
-  
-afterAll(done => {
-    // Closing the DB connection allows Jest to exit successfully.
-    mongoose.connection.close()
-    done()
 })
 
 const reserveTest = {
-    _id: '6189ed211ce71374b338850c',
-    apartment_name: 'teste',
-    checkin_date: '2021-11-07 10:30',
-    checkout_date: '2021-11-10 12:00',
-    number_guests: 1,
-    guest: {
-        name: 'Teste',
-        email: 'test@gmail.com'
-    }
-}
+      _id: '6189ed211ce71374b338850c',
+      apartment_name: 'teste',
+      checkin_date: '2021-11-07 10:30',
+      checkout_date: '2021-11-10 12:00',
+      number_guests: 1,
+      guest: {
+          name: 'Teste',
+          email: 'test@gmail.com'
+      }
+  }
+
+
 
 describe('Reservation Controller', () => {
     
@@ -78,4 +74,10 @@ describe('Reservation Controller', () => {
             .delete(`/api/v1/reserva/${reserveTest._id}`)
             expect(test.statusCode).toBe(200)
     })
+})
+
+afterAll(done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    mongoose.connection.close()
+    done()
 })

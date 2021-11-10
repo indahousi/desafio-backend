@@ -1,10 +1,8 @@
 import express from 'express'
 import { router } from '../routes/reservas'
 import { connectDB } from '../db/connect'
-import dotenv from 'dotenv'
 import cors from 'cors'
 
-dotenv.config()
 
 class App {
     public app: express.Application
@@ -28,7 +26,7 @@ class App {
 
     private initializeDatabase(): void {
         try {
-            connectDB(process.env.MONGO_URI)
+            connectDB()
           } catch (error) {
             console.log(error)
           }

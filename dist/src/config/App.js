@@ -6,9 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const reservas_1 = require("../routes/reservas");
 const connect_1 = require("../db/connect");
-const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
-dotenv_1.default.config();
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -25,7 +23,7 @@ class App {
     }
     initializeDatabase() {
         try {
-            (0, connect_1.connectDB)(process.env.MONGO_URI);
+            (0, connect_1.connectDB)();
         }
         catch (error) {
             console.log(error);
