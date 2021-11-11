@@ -21,7 +21,7 @@ Configuração padrão:
 ```
 PORT=3000
 
-MONGO_URI="mongodb://mongodb:27017/desafio"
+MONGO_URL="mongodb://mongodb:27017/desafio"
 
 ```
 

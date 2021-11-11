@@ -115,18 +115,22 @@
                             "examples": {
                                 "reserve": {
                                     "value": {
-                                        "apartment_name": "quarto71",
-                                        "checkin_date": "2021-04-02 10:30",
-                                        "checkout_date": "2021-04-05 12:30",
-                                        "guest_number": 2,
+                                        "apartment_name": "quarto150",
+                                        "checkout_date": "2021-05-14 15:00",
+                                        "checkin_date": "2021-05-12 12:01",
+                                        "number_guests": 3,
                                         "guest_data": [
                                             {
-                                                "guest_name": "one foo",
-                                                "guest_email": "one@bar.com"
+                                                "guest_name": "saulo santos",
+                                                "guest_email": "saulo@gmail.com"
                                             },
                                             {
-                                                "guest_name": "two foo",
-                                                "guest_email": "two@bar.com"
+                                                "guest_name": "amanda santos",
+                                                "guest_email": "amanda@gmail.com"
+                                            },
+                                            {
+                                                "guest_name": "felipe santos",
+                                                "guest_email": "felipe@gmail.com"
                                             }
                                         ]
                                     }
@@ -261,7 +265,7 @@
                                         "apartment_name": "quarto71",
                                         "checkin_date": "2021-05-08 10:30",
                                         "checkout_date": "2021-05-11 12:30",
-                                        "guest_number": 2,
+                                        "number_guests": 2,
                                         "guest_data": [
                                             {
                                                 "guest_name": "one foo",
