@@ -14,7 +14,7 @@ http://localhost:3000/api-docs
 ## Variáveis de ambiente
 > .env
 
-O arquivo .env é um arquivo de configuração que contém as variáveis de ambiente necessárias para o funcionamento do projeto.
+Crie o arquivo .env com a configuração que contém as variáveis de ambiente necessárias para o funcionamento do projeto.
 
 Configuração padrão:
 
