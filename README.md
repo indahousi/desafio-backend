@@ -25,6 +25,16 @@ MONGO_URL="mongodb://mongodb:27017/desafio"
 
 ```
 
+## Rodando o projeto
+Dentro da pasta da aplicação, execute o comando para instalar as dependências:
+```
+npm install
+```
+Iniciem o servidor:
+```
+npm start
+```
+Acesse o endereço http://localhost:3000/api-docs
 ## Ambiente Docker
 > Dockerfile
 
