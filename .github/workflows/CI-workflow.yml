@@ -22,7 +22,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
+    
+    - name: Create env file
+      run: |
+        echo "PORT=3000" > .env
+        echo "MONGO_URL_TEST=mongodb://localhost:27017/test" >> .env
+         
     - name: Start Docker for Mongodb
       run: docker run --name mongodb -d -p 27017:27017 mongo
 

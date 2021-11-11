@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "env NODE_ENV=test jest",
+    "test": "jest",
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc --build",
     "start": "node dist/src/server.js",
-    "start-test": "env NODE_ENV=test node dist/src/server.js"
+    "start-test": "node dist/src/server.js"
   },
   "repository": {
     "type": "git",
