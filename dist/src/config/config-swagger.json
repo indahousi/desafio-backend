@@ -1,0 +1,405 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sample API",
+        "description": "API REST com funções ",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/api/v1"
+        }
+    ],
+    "paths": {
+        "/reserva": {
+            "get": {
+                "tags": ["Reservas"],
+                "summary": "Listar todas as reservas",
+                "description": "Listar todas as reservas",
+                "operationId": "listarReservas",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservations": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                },
+                                "count": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/reserva/{id}": {
+            "get": {
+                "tags": ["Reservas"],
+                "summary": "Buscar reserva por id",
+                "description": "Esta função faz a busca pelo id da reserva, informe o id como parâmetro",
+                "operationId": "listarReservaPorId",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/reserva/create": {
+            "post": {
+                "tags": ["Reservas"],
+                "summary": "Criar reserva",
+                "description": "Esta função cria uma reserva, informe a data no padrão (yyyy-mm-dd HH:mm:ss)",
+                "operationId": "criarReserva",
+                "produces": [
+                    "application/json"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "name": "reservation",
+                            "in": "body",
+                            "description": "Reserva",
+                            "required": true,
+                            "schema": {
+                                "$ref": "#/components/schemas/Reservations"
+                            },
+                            "examples": {
+                                "reserve": {
+                                    "value": {
+                                        "apartment_name": "quarto71",
+                                        "checkin_date": "2021-04-02 10:30",
+                                        "checkout_date": "2021-04-05 12:30",
+                                        "guest_number": 2,
+                                        "guest_data": [
+                                            {
+                                                "guest_name": "one foo",
+                                                "guest_email": "one@bar.com"
+                                            },
+                                            {
+                                                "guest_name": "two foo",
+                                                "guest_email": "two@bar.com"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/reserva/getByDate": {
+            "post": {
+                "tags": ["Reservas"],
+                "summary": "Buscar reserva por data",
+                "description": "Esta função faz a busca pelo intervalo de data que informar",
+                "operationId": "listarReservaPorData",
+                "produces": [
+                    "application/json"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "name": "data",
+                            "in": "body",
+                            "description": "Data da reserva",
+                            "required": true,
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "apartment_name": {
+                                        "type": "string"
+                                    },
+                                    "checkin_date": {
+                                        "type": "Date"
+                                    },
+                                    "checkout_date": {
+                                        "type": "Date"
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "reserve": {
+                                    "value": {
+                                        "apartment_name": "quarto71",
+                                        "checkin_date": "2021-04-02 10:30",
+                                        "checkout_date": "2021-04-08 12:30"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/reserva/update/{id}": {
+            "put": {
+                "tags": ["Reservas"],
+                "summary": "Atualizar reserva",
+                "description": "Esta função atualiza uma reserva",
+                "operationId": "atualizarReserva",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "name": "reservation",
+                            "in": "body",
+                            "description": "Reserva",
+                            "required": true,
+                            "schema": {
+                                "$ref": "#/components/schemas/Reservations"
+                            },
+                            "examples": {
+                                "reserve": {
+                                    "value": {
+                                        "apartment_name": "quarto71",
+                                        "checkin_date": "2021-05-08 10:30",
+                                        "checkout_date": "2021-05-11 12:30",
+                                        "guest_number": 2,
+                                        "guest_data": [
+                                            {
+                                                "guest_name": "one foo",
+                                                "guest_email": "one@bar.com"
+                                            },
+                                            {
+                                                "guest_name": "two foo",
+                                                "guest_email": "two@bar.com"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/reserva/delete/{id}": {
+            "delete": {
+                "tags": ["Reservas"],
+                "summary": "Deletar reserva",
+                "description": "Esta função deleta uma reserva",
+                "operationId": "deletarReserva",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Reservations": {
+                "type": "object",
+                "properties": {
+                    "apartment_name": {
+                        "type": "string",
+                        "required": ["true", "must provide name"],
+                        "trim": "true",
+                        "maxlength": ["20", "name can not be more than 20 char"]
+                    },
+                    "checkin_date": {
+                        "type": "Date",
+                        "required": ["true", "must provide check-in date"],
+                        "default": "false"
+                    },
+                    "checkout_date": {
+                        "type": "Date",
+                        "required": ["true", "must provide check-out date"],
+                        "default": "false"
+                    },
+                    "number_guests": {
+                        "type": "Number",
+                        "required": ["true", "must provide number of guests"],
+                        "default": "false"
+                    },
+                    "guest_data": {
+                        "type": "object",
+                        "properties": {
+                            "guest_name": {
+                                "type": "array",
+                                "itens": {
+                                    "type": "string",
+                                    "required": ["true", "must provide name"],
+                                    "trim": "true",
+                                    "maxlength": ["50", "name can not be more than 50 char"]
+                                }
+                            },
+                            "guest_email": {
+                                "type": "array",
+                                "itens": {
+                                    "type": "string",
+                                    "required": ["true", "must provide email"],
+                                    "trim": "true",
+                                    "maxlength": ["30", "email can not be more than 30 char"]
+                                }
+                            }
+                        }
+                    },
+                    "timestamp": {
+                        "type": "Date",
+                        "default": "Date.now"
+                    }
+                }
+            }
+        }
+    }
+}

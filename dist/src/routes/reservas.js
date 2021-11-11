@@ -8,12 +8,9 @@ const express_1 = __importDefault(require("express"));
 const ReservationController_1 = require("../controllers/ReservationController");
 const router = express_1.default.Router();
 exports.router = router;
-router.route("/")
-    .get(ReservationController_1.ReservationController.getAllReservations)
-    .post(ReservationController_1.ReservationController.createReserve);
-router.route("/:id")
-    .get(ReservationController_1.ReservationController.getReserve)
-    .put(ReservationController_1.ReservationController.updateReserve)
-    .delete(ReservationController_1.ReservationController.deleteReserve);
-router.route("/getByDate")
-    .post(ReservationController_1.ReservationController.getReservationsByDate);
+router.route("/").get(ReservationController_1.ReservationController.getAllReservations);
+router.route("/create").post(ReservationController_1.ReservationController.createReserve);
+router.route("/:id").get(ReservationController_1.ReservationController.getReserve);
+router.route("/update/:id").put(ReservationController_1.ReservationController.updateReserve);
+router.route("/delete/:id").delete(ReservationController_1.ReservationController.deleteReserve);
+router.route("/getByDate").post(ReservationController_1.ReservationController.getReservationsByDate);

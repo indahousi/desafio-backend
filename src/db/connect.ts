@@ -1,12 +1,16 @@
-import mongoose from 'mongoose'
+import mongoose, { Mongoose } from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
-let MONGODB_URI = process.env.PROD_MONGODB 
+export const connect = async (): Promise<Mongoose> => {
 
-const connectDB = () => {
-    return mongoose
-        .connect(MONGODB_URI)
+  if (process.env.NODE_ENV === 'test') {
+    const mongoUrl = process.env.MONGODB_URL 
+    return await mongoose.connect(mongoUrl)
+  } else {
+    const mongoUrl = process.env.MONGODB_URL_TEST 
+    return await mongoose.connect(mongoUrl)
+  }
+  
 }
-
-export { connectDB }
+export const close = (): Promise<void> => mongoose.connection.close()

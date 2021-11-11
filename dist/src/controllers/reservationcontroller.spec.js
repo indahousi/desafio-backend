@@ -23,13 +23,13 @@ const reserveTest = {
 describe('Reservation Controller', () => {
     test('Should return 201 if created new user', async () => {
         let response = await (0, supertest_1.default)(App_1.default)
-            .post(`/api/v1/reserva/`)
+            .post(`/api/v1/reserva/create/`)
             .send(reserveTest);
         expect(response.statusCode).toBe(201);
     });
     test('Should return 400 if there is a reservation in the desired period', async () => {
         let response = await (0, supertest_1.default)(App_1.default)
-            .post(`/api/v1/reserva/`)
+            .post(`/api/v1/reserva/create/`)
             .send(reserveTest);
         expect(response.statusCode).toBe(400);
     });
@@ -51,7 +51,7 @@ describe('Reservation Controller', () => {
     });
     test('Should return 200 if success update reserve', async () => {
         let test = await (0, supertest_1.default)(App_1.default)
-            .put(`/api/v1/reserva/${reserveTest._id}`)
+            .put(`/api/v1/reserva/update/${reserveTest._id}`)
             .send({
             number_guests: 2,
             guest: {
@@ -63,7 +63,7 @@ describe('Reservation Controller', () => {
     });
     test('Should return 200 if success delete reserve', async () => {
         let test = await (0, supertest_1.default)(App_1.default)
-            .delete(`/api/v1/reserva/${reserveTest._id}`);
+            .delete(`/api/v1/reserva/delete/${reserveTest._id}`);
         expect(test.statusCode).toBe(200);
     });
 });

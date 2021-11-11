@@ -1,6 +1,6 @@
 import express from 'express'
 import { router } from '../routes/reservas'
-import { connectDB } from '../db/connect'
+import { connect } from '../db/connect'
 import cors from 'cors'
 import swaggerDocs from './config-swagger.json'
 import swaggerUi from 'swagger-ui-express'
@@ -18,7 +18,9 @@ class App {
 
     private initializeMiddlewares(): void {
         this.app.use(express.json())
-        this.app.use(cors())
+        this.app.use(cors({
+            origin: '*',
+          }))
     }
     
     private initializeControllers(): void {
@@ -27,7 +29,7 @@ class App {
 
     private initializeDatabase(): void {
         try {
-            connectDB()
+            connect()
           } catch (error) {
             console.log(error)
           }
