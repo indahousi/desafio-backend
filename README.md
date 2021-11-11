@@ -10,7 +10,6 @@ API para reservas de apartamentos.
 http://localhost:3000/api-docs
 
 ```
-
 ## Variáveis de ambiente
 > .env
 
