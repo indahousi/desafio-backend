@@ -29,6 +29,10 @@ Dentro da pasta da aplicação, execute o comando para instalar as dependências
 ```
 npm install
 ```
+Rode a compilação:
+```
+npm build
+```
 Iniciem o servidor:
 ```
 npm start
