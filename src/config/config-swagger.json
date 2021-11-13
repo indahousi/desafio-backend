@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Sample API",
-        "description": "API REST com funções ",
+        "description": "API REST com funções de reserva",
         "version": "1.0.0"
     },
     "servers": [
@@ -193,7 +193,6 @@
                             "examples": {
                                 "reserve": {
                                     "value": {
-                                        "apartment_name": "quarto71",
                                         "checkin_date": "2021-04-02 10:30",
                                         "checkout_date": "2021-04-08 12:30"
                                     }
