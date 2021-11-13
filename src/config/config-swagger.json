@@ -182,9 +182,6 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "apartment_name": {
-                                        "type": "string"
-                                    },
                                     "checkin_date": {
                                         "type": "Date"
                                     },

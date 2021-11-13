@@ -6,13 +6,13 @@ import { deleteReserve } from '../services/DeleteReservationService';
 import { findAndUpdateReservations } from '../services/UpdateReservationService';
 import { getAllReservations } from '../services/GetAllReservationsService';
 import { findReservationByDate } from '../services/FindReservationByDateService';
-
+import { checkReservationExists } from '../services/CheckReservationService';
 
 class ReserveController {
 
     public  async createReserve (request: Request<IReservations>, response: Response) {
         try {
-            const checkReservation = await findReservationByDate({...request.body})
+            const checkReservation = await checkReservationExists({...request.body})
             if (checkReservation.length > 0) {
                 return response.status(400).json({ error: 'Reservation already exists' })
             }          

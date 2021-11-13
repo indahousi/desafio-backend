@@ -161,7 +161,6 @@ Resposta do tipo json se os dados forem validados, ou então retornará uma mens
 Deverá informar os parâmetros 'apartment_name' 'checkin_date' e 'checkout_date':
 ```
 	{
-    	"apartment_name": "quarto5",
         "checkin_date": "2021-05-10 11:00",
         "checkout_date": "2021-05-15 17:35"
 	}

@@ -18,8 +18,6 @@ const reserveTest = {
       }
   }
 
-
-
 describe('Reservation Controller', () => {
     
     test('Should return 201 if created new user', async () => {
