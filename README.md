@@ -158,14 +158,14 @@ Resposta do tipo json se os dados forem validados, ou então retornará uma mens
 ## Buscar reservas por data
 
 > localhost:3000/api/v1/reserva/getByDate
-Deverá informar os parâmetros 'apartment_name' 'checkin_date' e 'checkout_date':
+Deverá informar os parâmetros 'checkin_date' e 'checkout_date':
 ```
 	{
         "checkin_date": "2021-05-10 11:00",
         "checkout_date": "2021-05-15 17:35"
 	}
 ```
-Resposta do tipo json se for encontrado reservar para o quarto dentro do período de datas informadas, ou então retornará status 200 com um array vazio.
+Resposta do tipo json se for encontrado dentro do período de datas informadas, ou então retornará status 200 com um array vazio.
 
 ## Atualizar uma reserva
 
