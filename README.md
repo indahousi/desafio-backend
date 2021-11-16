@@ -90,8 +90,8 @@ Resposta do tipo json:
         {
             "_id": "618964495954cf986a18e500",
             "apartment_name": "quarto1",
-            "checkin_date": "2021-04-01T10:00:00.000Z",
-            "checkout_date": "2021-04-02T12:00:00.000Z",
+            "checkin_date": "2021-04-01T00:00:00.000Z",
+            "checkout_date": "2021-04-02T00:00:00.000Z",
             "number_guests": 2,
             "guest_data": [
                 {
@@ -138,8 +138,8 @@ Deverá informar os dados em json:
 ```
 {
 	"apartment_name": "quarto1",            
-    "checkin_date": "2021-11-07 10:30",
-    "checkout_date": "2021-11-12 12:00",
+    "checkin_date": "2021-11-07",
+    "checkout_date": "2021-11-12",
     "number_guests": 2,
     "guest_data": [
         {
@@ -161,8 +161,8 @@ Resposta do tipo json se os dados forem validados, ou então retornará uma mens
 Deverá informar os parâmetros 'checkin_date' e 'checkout_date':
 ```
 	{
-        "checkin_date": "2021-05-10 11:00",
-        "checkout_date": "2021-05-15 17:35"
+        "checkin_date": "2021-05-10",
+        "checkout_date": "2021-05-15"
 	}
 ```
 Resposta do tipo json se for encontrado dentro do período de datas informadas, ou então retornará status 200 com um array vazio.
@@ -175,8 +175,8 @@ Deverá informar o id da reserva a ser atualizada na url.
 Assim como no méthodo de criação, deverá informar os dados em json com os parâmetros a serem atualizados:
 ```
 	{
-        "checkin_date": "2021-02-10 11:00",
-        "checkout_date": "2021-02-15 17:35"
+        "checkin_date": "2021-02-10",
+        "checkout_date": "2021-02-15"
 	}
 ```
 ## Deletar uma reserva

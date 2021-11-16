@@ -116,8 +116,8 @@
                                 "reserve": {
                                     "value": {
                                         "apartment_name": "quarto150",
-                                        "checkout_date": "2021-05-14 15:00",
-                                        "checkin_date": "2021-05-12 12:01",
+                                        "checkout_date": "2021-05-14",
+                                        "checkin_date": "2021-05-12",
                                         "number_guests": 3,
                                         "guest_data": [
                                             {
@@ -193,8 +193,8 @@
                             "examples": {
                                 "reserve": {
                                     "value": {
-                                        "checkin_date": "2021-04-02 10:30",
-                                        "checkout_date": "2021-04-08 12:30"
+                                        "checkin_date": "2021-04-02",
+                                        "checkout_date": "2021-04-08"
                                     }
                                 }
                             }
@@ -259,8 +259,8 @@
                                 "reserve": {
                                     "value": {
                                         "apartment_name": "quarto71",
-                                        "checkin_date": "2021-05-08 10:30",
-                                        "checkout_date": "2021-05-11 12:30",
+                                        "checkin_date": "2021-05-08",
+                                        "checkout_date": "2021-05-11",
                                         "number_guests": 2,
                                         "guest_data": [
                                             {

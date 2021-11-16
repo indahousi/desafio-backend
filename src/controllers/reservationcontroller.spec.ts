@@ -9,14 +9,16 @@ beforeAll(done => {
 const reserveTest = {
       _id: '6189ed211ce71374b338850c',
       apartment_name: 'teste',
-      checkin_date: '2021-11-07 10:30',
-      checkout_date: '2021-11-10 12:00',
+      checkin_date: '2021-11-07',
+      checkout_date: '2021-11-10',
       number_guests: 1,
-      guest: {
-          name: 'Teste',
-          email: 'test@gmail.com'
-      }
-  }
+      guest_data:[
+        {
+            guest_name: 'Teste',
+            guest_email: 'test@gmail.com'
+        }
+      ] 
+}
 
 describe('Reservation Controller', () => {
     
@@ -58,11 +60,16 @@ describe('Reservation Controller', () => {
         let test = await request(App)
             .put(`/api/v1/reserva/update/${reserveTest._id}`)
             .send({
-                number_guests: 2,
-                guest: {
-                    name: 'TesteUpdate',
-                    email: 'TesteUpdate@gmail.com'
-                }
+                apartment_name: 'teste',
+                checkin_date: '2021-11-01',
+                checkout_date: '2021-11-05',
+                number_guests: 1,
+                guest_data:[
+                  {
+                      guest_name: 'Teste',
+                      guest_email: 'test@gmail.com'
+                  }
+                ] 
             })
             expect(test.statusCode).toBe(200)
     })
