@@ -170,7 +170,7 @@ Resposta do tipo json se for encontrado dentro do período de datas informadas, 
 
 ## Atualizar uma reserva
 
-> localhost:3000/api/v1/reserva/id
+> localhost:3000/api/v1/reserva/update/id
 
 Deverá informar o id da reserva a ser atualizada na url.
 Assim como no méthodo de criação, deverá informar os dados em json com os parâmetros a serem atualizados:
