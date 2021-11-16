@@ -122,7 +122,7 @@ Resposta do tipo json se o id for encontrado, ou então retornará um erro 404
 
 ## Criar uma nova reserva
 
-> localhost:3000/api/v1/reserva/
+> localhost:3000/api/v1/reserva/create
 
 | Obrigatório | Tipo | Tamanho Máx. | Parâmetro  
 |---|---|---|---|
@@ -158,6 +158,7 @@ Resposta do tipo json se os dados forem validados, ou então retornará uma mens
 ## Buscar reservas por data
 
 > localhost:3000/api/v1/reserva/getByDate
+
 Deverá informar os parâmetros 'checkin_date' e 'checkout_date':
 ```
 	{
