@@ -49,6 +49,19 @@ class ReserveController {
             if (!idCheck) {
                 return response.sendStatus(404)
             }
+
+            const checkReservation = await checkReservationExists({...request.body})
+
+            checkReservation.forEach(reservation => {
+                if (reservation._id == reserveId) {
+                    checkReservation.splice(checkReservation.indexOf(reservation), 1)
+                }
+            })
+            
+            if (checkReservation.length > 0) {
+                return response.status(400).json({ error: 'Reservation already exists' })
+            } 
+
             const updatedReservation = await findAndUpdateReservations(reserveId, update, { new: true, runValidators: true })
             return response.status(200).json(updatedReservation) 
         } catch (error) {

@@ -7,8 +7,8 @@ export async function checkReservationExists(query: IReservations, options: Quer
         $and: [
             { apartment_name: query.apartment_name },
             { $or:[
-                { checkin_date: { $gte: query.checkin_date, $lt: query.checkout_date } },
-                { checkout_date: { $gte: query.checkin_date, $lt: query.checkout_date } }
+                { checkin_date: { $gte: new Date(new Date(query.checkin_date).setHours(0, 0, 0)), $lt: new Date(new Date(query.checkout_date).setHours(23, 59, 59))} },
+                { checkout_date: { $gte: new Date(new Date(query.checkin_date).setHours(0, 0, 0)), $lt: new Date(new Date(query.checkout_date).setHours(23, 59, 59))} }
             ]}
         ]
     }, {}, options)    
