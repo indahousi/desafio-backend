@@ -47,53 +47,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/reserva/{id}": {
-            "get":{
-                "tags": ["Reservas"],
-                "summary": "Buscar reserva por id",
-                "description": "Esta função faz a busca pelo id da reserva, informe o id como parâmetro",
-                "operationId": "listarReservaPorId",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id da reserva",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Sucesso",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "reservation": {
-                                    "type": "object",
-                                    "items":{
-                                        "$ref":"#/components/schemas/Reservations"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            }
-        },
-        "/reserva/create": {
+            },
             "post":{
                 "tags": ["Reservas"],
                 "summary": "Criar reserva",
@@ -163,44 +117,26 @@
                 }
             }
         },
-        "/reserva/getByDate": {
-            "post":{
+        "/reserva/{id}": {
+            "get":{
                 "tags": ["Reservas"],
-                "summary": "Buscar reserva por data",
-                "description": "Esta função faz a busca pelo intervalo de data que informar",
-                "operationId": "listarReservaPorData",
+                "summary": "Buscar reserva por id",
+                "description": "Esta função faz a busca pelo id da reserva, informe o id como parâmetro",
+                "operationId": "listarReservaPorId",
                 "produces": [
                     "application/json"
                 ],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "name": "data",
-                            "in": "body",
-                            "description": "Data da reserva",
-                            "required": true,
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "checkin_date": {
-                                        "type": "Date"
-                                    },
-                                    "checkout_date": {
-                                        "type": "Date"
-                                    }
-                                }
-                            },
-                            "examples": {
-                                "reserve": {
-                                    "value": {
-                                        "checkin_date": "2021-04-02",
-                                        "checkout_date": "2021-04-08"
-                                    }
-                                }
-                            }
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Sucesso",
@@ -223,9 +159,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/reserva/update/{id}": {
+            },
             "put":{
                 "tags": ["Reservas"],
                 "summary": "Atualizar reserva",
@@ -300,9 +234,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/reserva/delete/{id}": {
+            },
             "delete":{
                 "tags": ["Reservas"],
                 "summary": "Deletar reserva",
@@ -322,6 +254,69 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reservation": {
+                                    "type": "object",
+                                    "items":{
+                                        "$ref":"#/components/schemas/Reservations"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        
+        "/reserva/getByDate": {
+            "post":{
+                "tags": ["Reservas"],
+                "summary": "Buscar reserva por data",
+                "description": "Esta função faz a busca pelo intervalo de data que informar",
+                "operationId": "listarReservaPorData",
+                "produces": [
+                    "application/json"
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "name": "data",
+                            "in": "body",
+                            "description": "Data da reserva",
+                            "required": true,
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "checkin_date": {
+                                        "type": "Date"
+                                    },
+                                    "checkout_date": {
+                                        "type": "Date"
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "reserve": {
+                                    "value": {
+                                        "checkin_date": "2021-01-02",
+                                        "checkout_date": "2021-11-08"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Sucesso",
