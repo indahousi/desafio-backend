@@ -7,6 +7,7 @@ import { findAndUpdateReservations } from '../services/UpdateReservationService'
 import { getAllReservations } from '../services/GetAllReservationsService';
 import { findReservationByDate } from '../services/FindReservationByDateService';
 import { checkReservationExists } from '../services/CheckReservationService';
+import { checkDate } from '../services/CheckDateService';
 
 class ReserveController {
 
@@ -15,7 +16,11 @@ class ReserveController {
             const checkReservation = await checkReservationExists({...request.body})
             if (checkReservation.length > 0) {
                 return response.status(400).json({ error: 'Reservation already exists' })
-            }          
+            }
+            const checkDateDif = await checkDate({...request.body})
+            if (checkDateDif == false) {
+                return response.status(400).json({ error: 'Checkin date must be before checkout date' })
+            }
             const reservation = await createReservation(request.body)
             return response.status(201).json(reservation)
         } catch (error) {
@@ -49,7 +54,11 @@ class ReserveController {
             if (!idCheck) {
                 return response.sendStatus(404)
             }
-
+            const checkDateDif = await checkDate({...request.body})
+            if (checkDateDif == false) {
+                return response.status(400).json({ error: 'Checkin date must be before checkout date' })
+            }
+            
             const checkReservation = await checkReservationExists({...request.body})
 
             checkReservation.forEach(reservation => {
