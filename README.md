@@ -176,8 +176,16 @@ Deverá informar o id da reserva a ser atualizada na url.
 Assim como no méthodo de criação, deverá informar os dados em json com os parâmetros a serem atualizados:
 ```
 	{
-        "checkin_date": "2021-02-10",
-        "checkout_date": "2021-02-15"
+    "apartment_name": "quarto1",            
+    "checkin_date": "2021-11-15",
+    "checkout_date": "2021-11-22",
+    "number_guests": 1,
+    "guest_data": [
+        {
+            "guest_name": "saulo santos",
+            "guest_email": "saulo@gmail.com",
+        }
+	] 
 	}
 ```
 ## Deletar uma reserva
