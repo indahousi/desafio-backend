@@ -70,10 +70,10 @@ docker-compose down -v
 |---|---|---|---|
 | `GET` | localhost:3000/api/v1/reserva/ | | Retorna todas as reservas
 | `GET` | localhost:3000/api/v1/reserva/ | id | Retorna a reserva com o id passado por parâmetro
-| `POST` | localhost:3000/api/v1/reserva/create/ |  | Cria uma nova reserva
+| `POST` | localhost:3000/api/v1/reserva/ |  | Cria uma nova reserva
 | `POST` | localhost:3000/api/v1/reserva/getByDate/ |  | Filtrar reservas por data
-| `PUT` | localhost:3000/api/v1/reserva/update/ | id | Atualiza a reserva com o id passado por parâmetro
-| `DELETE` | localhost:3000/api/v1/reserva/delete/ | id | Deleta a reserva com o id passado por parâmetro
+| `PUT` | localhost:3000/api/v1/reserva/| id | Atualiza a reserva com o id passado por parâmetro
+| `DELETE` | localhost:3000/api/v1/reserva/ | id | Deleta a reserva com o id passado por parâmetro
 
 
 
@@ -122,7 +122,7 @@ Resposta do tipo json se o id for encontrado, ou então retornará um erro 404
 
 ## Criar uma nova reserva
 
-> localhost:3000/api/v1/reserva/create
+> localhost:3000/api/v1/reserva/
 
 | Obrigatório | Tipo | Tamanho Máx. | Parâmetro  
 |---|---|---|---|
@@ -170,7 +170,7 @@ Resposta do tipo json se for encontrado dentro do período de datas informadas, 
 
 ## Atualizar uma reserva
 
-> localhost:3000/api/v1/reserva/update/id
+> localhost:3000/api/v1/reserva/id
 
 Deverá informar o id da reserva a ser atualizada na url.
 Assim como no méthodo de criação, deverá informar os dados em json com os parâmetros a serem atualizados:
