@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import {IReservations} from "../interfaces/Reservations"
+import { IGuest } from "../interfaces/Guest"
 
 const GuestSchema = new mongoose.Schema({
     guest_name: {
@@ -36,9 +37,19 @@ const ReservationSchema = new mongoose.Schema({
     number_guests: {
         type: Number,
         required: [true,'must provide number of guests'],
-        default: false
+        default: false,
+        min: [1,'number of guests must be greater than 0']
     },
-    guest_data: [GuestSchema],
+    guest_data: {
+        type: [GuestSchema],
+        required: [true,'must provide guest data'],
+        default: false,
+        validate: {
+            validator: function(guest: Array<IGuest>) {
+                return guest.length > 0
+            }    
+        }    
+    },
     timestamp: {
         type: Date,
         default: Date.now
