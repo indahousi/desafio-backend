@@ -27,9 +27,9 @@ class App {
         this.app.use('/api/v1/reserva', router)
     }
 
-    private initializeDatabase(): void {
+    private async initializeDatabase(): Promise<void> {
         try {
-            connect()
+            await connect()
           } catch (error) {
             console.log(error)
           }
