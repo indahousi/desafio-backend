@@ -18,9 +18,7 @@ class App {
 
     private initializeMiddlewares(): void {
         this.app.use(express.json())
-        this.app.use(cors({
-            origin: '*',
-          }))
+        this.app.use(cors())
     }
     
     private initializeControllers(): void {
