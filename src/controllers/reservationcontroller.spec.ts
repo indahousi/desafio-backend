@@ -8,7 +8,7 @@ beforeAll(done => {
 
 const reserveTest = {
       _id: '6189ed211ce71374b338850c',
-      apartment_name: 'teste',
+      apartment_name: 'Mockteste',
       checkin_date: '2021-11-07',
       checkout_date: '2021-11-10',
       number_guests: 1,
@@ -60,7 +60,7 @@ describe('Reservation Controller', () => {
         let test = await request(App)
             .put(`/api/v1/reserva/${reserveTest._id}`)
             .send({
-                apartment_name: 'teste',
+                apartment_name: 'Mockteste',
                 checkin_date: '2021-11-01',
                 checkout_date: '2021-11-05',
                 number_guests: 1,
@@ -82,7 +82,6 @@ describe('Reservation Controller', () => {
 })
 
 afterAll(done => {
-    // Closing the DB connection allows Jest to exit successfully.
     mongoose.connection.close()
     done()
 })

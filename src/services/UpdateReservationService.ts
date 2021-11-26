@@ -6,9 +6,6 @@ export async function findAndUpdateReservations(
     query: FilterQuery<IReservations>,
     update: UpdateQuery<IReservations>,
     options: QueryOptions
-  ) {
-    
-        const reservation = await Reservation.findOneAndUpdate(query, update, options);
-        return reservation
-      
+  ) { 
+      return Reservation.findOneAndUpdate(query, update, options)   
   }

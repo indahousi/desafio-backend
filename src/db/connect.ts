@@ -5,6 +5,6 @@ dotenv.config()
 let mongoUrl = process.env.MONGODB_URL
 
 export const connect = async (): Promise<Mongoose> =>
-  await mongoose.connect(mongoUrl)
+  mongoose.connect(mongoUrl)
 
 export const close = (): Promise<void> => mongoose.connection.close()

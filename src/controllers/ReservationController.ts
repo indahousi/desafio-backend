@@ -18,7 +18,7 @@ class ReserveController {
                 return response.status(400).json({ error: 'Reservation already exists' })
             }
             const checkDateDif = await checkDate({...request.body})
-            if (checkDateDif == false) {
+            if (!checkDateDif) {
                 return response.status(400).json({ error: 'Checkin date must be before checkout date' })
             }
             const reservation = await createReservation(request.body)
@@ -37,7 +37,7 @@ class ReserveController {
             if (!reserve) {
                 return response.sendStatus(404)
             }
-            const deleteReservation = await deleteReserve(reserveId)
+            await deleteReserve(reserveId)
             return response.sendStatus(200)
         } catch (error) {
             return response.status(400).json({message : error})
@@ -55,7 +55,7 @@ class ReserveController {
                 return response.sendStatus(404)
             }
             const checkDateDif = await checkDate({...request.body})
-            if (checkDateDif == false) {
+            if (!checkDateDif) {
                 return response.status(400).json({ error: 'Checkin date must be before checkout date' })
             }
             

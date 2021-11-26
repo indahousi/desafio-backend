@@ -1,9 +1,9 @@
 import { IReservations } from '../interfaces/Reservations'
 import { Reservation } from '../models/Reservations'
-import { FilterQuery, QuerySelector, QueryOptions } from "mongoose";
+import { QueryOptions } from "mongoose";
 
 export async function checkReservationExists(query: IReservations, options: QueryOptions = { lean: true }) {
-    const reservations = await Reservation.find({
+    return Reservation.find({
         $and: [
             { apartment_name: query.apartment_name },
             { $or:[
@@ -12,5 +12,4 @@ export async function checkReservationExists(query: IReservations, options: Quer
             ]}
         ]
     }, {}, options)    
-    return reservations
 }
